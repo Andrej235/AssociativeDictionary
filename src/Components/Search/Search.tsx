@@ -12,32 +12,14 @@ interface SearchProps {
   possibleWords: string[];
   onSelectWord?: (word: string) => void;
   wrapperRef?: React.RefObject<HTMLDivElement>;
-  onOpen?: () => void;
-  onClose?: () => void;
 }
 
-function Search({
-  possibleWords,
-  onSelectWord,
-  wrapperRef: ref,
-  onOpen,
-  onClose,
-}: SearchProps) {
+function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
   const suggestionWrapperRef = useRef<HTMLDivElement>(null);
   const trie = useMemo(() => Trie.from(possibleWords), [possibleWords]);
 
   const { contextSafe } = useGSAP();
   const sortAnimation = useCallback(
-    contextSafe((oldState: Flip.FlipState) => {
-      Flip.from(oldState, {
-        duration: 0.5,
-        ease: "power1.inOut",
-      });
-    }),
-    [contextSafe]
-  );
-
-  const wrapperAnimation = useCallback(
     contextSafe((oldState: Flip.FlipState) => {
       Flip.from(oldState, {
         duration: 0.5,
@@ -95,7 +77,7 @@ function Search({
     ];
 
     setAutocompleteResults({
-      words: suggestions.slice(0, 20),
+      words: suggestions.slice(0, 30),
       state: oldWordState,
     });
   }
@@ -115,34 +97,9 @@ function Search({
 
           return true; //Clears the search bar / input field
         }}
-        onFocus={() => {
-          if (!suggestionWrapperRef.current) return;
-
-          const oldWrapperState = Flip.getState(
-            "#autocomplete-container, #search-bar"
-          );
-
-          suggestionWrapperRef.current.classList.remove("hidden");
-          wrapperAnimation(oldWrapperState);
-          onOpen?.();
-        }}
-        onBlur={() => {
-          if (!suggestionWrapperRef.current) return;
-
-          const oldWrapperState = Flip.getState(
-            "#autocomplete-container, #search-bar"
-          );
-          suggestionWrapperRef.current.classList.add("hidden");
-          wrapperAnimation(oldWrapperState);
-          onClose?.();
-        }}
       />
 
-      <div
-        id="autocomplete-container"
-        className="hidden"
-        ref={suggestionWrapperRef}
-      >
+      <div id="autocomplete-container" ref={suggestionWrapperRef}>
         {autocompleteResults.words.map((word) => (
           <p
             key={word}
