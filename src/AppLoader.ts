@@ -1,7 +1,12 @@
 import { defer } from "react-router-dom";
+import Word from "./Models/Word";
+
+const baseApiURL: string = "http://localhost:5119/api";
 
 export default async function AppLoader() {
   return defer({
-    words: fetch("/words", { method: "GET" }).then((res) => res.json()),
+    words: fetch(`${baseApiURL}/words`, { method: "GET" }).then(
+      (res) => res.json() as Promise<Word[]>
+    ),
   });
 }

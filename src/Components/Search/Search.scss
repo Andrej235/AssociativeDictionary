@@ -1,0 +1,60 @@
+#search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  overflow-x: hidden;
+  gap: 1rem;
+
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: hidden;
+
+  height: 95svh;
+  width: 80svw;
+  max-width: 500px;
+  padding: 5svh 1rem 0 1rem;
+
+  #autocomplete-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+
+    &.hidden {
+      position: absolute;
+      top: 100%;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .word {
+    cursor: pointer;
+  }
+}
