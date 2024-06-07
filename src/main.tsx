@@ -3,26 +3,26 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.scss";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import AppLoader from "./AppLoader.ts";
 import FullWordLoader from "./Components/FullWord/FullWordLoader.ts";
 import FullWordDisplay from "./Components/FullWord/FullWordDisplay.tsx";
 import WordsSearchPage from "./Components/WordsSearchDisplay/WordsSearchPage.tsx";
+import WordsLoader from "./Components/WordsSearchDisplay/WordsLoader.ts";
+import Archive from "./Components/Archive/Archive.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: AppLoader,
     children: [
       {
         path: "/",
         element: <WordsSearchPage />,
-        loader: AppLoader,
+        loader: WordsLoader,
       },
       {
         path: "/words",
-        element: <div children="Archive" />,
-        loader: AppLoader,
+        element: <Archive />,
+        loader: WordsLoader,
       },
       {
         path: "/words/:id",

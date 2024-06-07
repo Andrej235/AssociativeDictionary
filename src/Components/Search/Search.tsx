@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Flip from "gsap/dist/Flip";
 import InputField from "../InputField/InputField";
+import { toTitleCase } from "../../ToTitleCase";
 gsap.registerPlugin(Flip);
 
 interface SearchProps {
@@ -112,26 +113,13 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
                 });
               }}
             >
-              {titleCase(word)}
+              {toTitleCase(word)}
             </p>
           </div>
         ))}
       </div>
     </div>
   );
-}
-
-function titleCase(text: string) {
-  return text
-    .split(" ")
-    .map((word) => {
-      if (word.length === 0) return word;
-
-      return (
-        word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase()
-      );
-    })
-    .join(" ");
 }
 
 export default Search;

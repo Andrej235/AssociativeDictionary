@@ -2,10 +2,10 @@ import { Suspense } from "react";
 import { Await, useLoaderData, useNavigate } from "react-router-dom";
 import Word from "../../Models/Word";
 import Search from "../Search/Search";
-import AppLoader from "../../AppLoader";
+import WordsLoader from "./WordsLoader";
 
 export default function WordsSearchPage() {
-  const data = useLoaderData() as ReturnType<typeof AppLoader>;
+  const data = useLoaderData() as ReturnType<typeof WordsLoader>;
   const navigate = useNavigate();
 
   return (
