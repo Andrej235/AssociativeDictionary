@@ -8,6 +8,7 @@ import FullWordDisplay from "./Components/FullWord/FullWordDisplay.tsx";
 import WordsSearchPage from "./Components/WordsSearchDisplay/WordsSearchPage.tsx";
 import WordsLoader from "./Components/WordsSearchDisplay/WordsLoader.ts";
 import Archive from "./Components/Archive/Archive.tsx";
+import AboutPage from "./Components/About/AboutPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <div children="About" />,
+        element: <AboutPage />,
       },
     ],
   },
