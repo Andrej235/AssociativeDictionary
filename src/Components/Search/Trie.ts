@@ -20,7 +20,7 @@ export class Trie {
 
   static from(words: string[]) {
     const trie = new Trie();
-    words.forEach((word) => trie.insert(word));
+    words.forEach((word) => trie.insert(word.toLowerCase()));
     return trie;
   }
 
@@ -35,7 +35,7 @@ export class Trie {
     node.isWord = true;
   }
 
-  suggestHelper(root: TrieNode, list: string[], curr: string) {
+  private suggestHelper(root: TrieNode, list: string[], curr: string) {
     if (root.isWord) {
       list.push(curr);
     }
@@ -48,8 +48,10 @@ export class Trie {
   }
 
   suggest(prefix: string) {
+    prefix = prefix.toLowerCase();
     let node = this.root;
     let curr = "";
+
     for (let i = 0; i < prefix.length; i++) {
       if (!node.children[prefix[i]]) {
         return [];
@@ -57,6 +59,7 @@ export class Trie {
       node = node.children[prefix[i]];
       curr += prefix[i];
     }
+
     let list: string[] = [];
     this.suggestHelper(node, list, curr);
     return list;

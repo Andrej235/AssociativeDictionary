@@ -77,7 +77,7 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
     ];
 
     setAutocompleteResults({
-      words: suggestions.slice(0, 30),
+      words: suggestions.slice(0, 20),
       state: oldWordState,
     });
   }
@@ -85,7 +85,7 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
   return (
     <div id="search-container" ref={ref}>
       <InputField
-        iconName={"search"}
+        iconName="search"
         id="search-bar"
         onChange={(e) => createAutoCompleteResults(e.target.value)}
         onEnter={() => {
@@ -97,28 +97,41 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
 
           return true; //Clears the search bar / input field
         }}
+        placeholder="Pretrazite reci..."
       />
 
       <div id="autocomplete-container" ref={suggestionWrapperRef}>
         {autocompleteResults.words.map((word) => (
-          <p
-            key={word}
-            id={"word-" + word}
-            className="word"
-            onPointerDown={() => {
-              onSelectWord?.(word);
-              setAutocompleteResults({
-                words: possibleWords,
-                state: null,
-              });
-            }}
-          >
-            {word}
-          </p>
+          <div key={word} id={"word-" + word} className="word">
+            <p
+              onClick={() => {
+                onSelectWord?.(word);
+                setAutocompleteResults({
+                  words: possibleWords,
+                  state: null,
+                });
+              }}
+            >
+              {titleCase(word)}
+            </p>
+          </div>
         ))}
       </div>
     </div>
   );
+}
+
+function titleCase(text: string) {
+  return text
+    .split(" ")
+    .map((word) => {
+      if (word.length === 0) return word;
+
+      return (
+        word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase()
+      );
+    })
+    .join(" ");
 }
 
 export default Search;

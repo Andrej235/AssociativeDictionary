@@ -6,17 +6,34 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLoader from "./AppLoader.ts";
 import FullWordLoader from "./Components/FullWord/FullWordLoader.ts";
 import FullWordDisplay from "./Components/FullWord/FullWordDisplay.tsx";
+import WordsSearchPage from "./Components/WordsSearchDisplay/WordsSearchPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     loader: AppLoader,
-  },
-  {
-    path: "word/:id",
-    element: <FullWordDisplay />,
-    loader: FullWordLoader,
+    children: [
+      {
+        path: "/",
+        element: <WordsSearchPage />,
+        loader: AppLoader,
+      },
+      {
+        path: "/words",
+        element: <div children="Archive" />,
+        loader: AppLoader,
+      },
+      {
+        path: "/words/:id",
+        element: <FullWordDisplay />,
+        loader: FullWordLoader,
+      },
+      {
+        path: "about",
+        element: <div children="About" />,
+      },
+    ],
   },
 ]);
 
