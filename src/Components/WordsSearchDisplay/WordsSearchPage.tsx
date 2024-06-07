@@ -9,7 +9,7 @@ export default function WordsSearchPage() {
   const navigate = useNavigate();
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={null}>
       <Await resolve={"words" in data ? data.words : []}>
         {(words: Word[]) => {
           return (

@@ -103,18 +103,19 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
 
       <div id="autocomplete-container" ref={suggestionWrapperRef}>
         {autocompleteResults.words.map((word) => (
-          <div key={word} id={"word-" + word} className="word">
-            <p
-              onClick={() => {
-                onSelectWord?.(word);
-                setAutocompleteResults({
-                  words: possibleWords,
-                  state: null,
-                });
-              }}
-            >
-              {toTitleCase(word)}
-            </p>
+          <div
+            key={word}
+            id={"word-" + word}
+            className="word"
+            onClick={() => {
+              onSelectWord?.(word);
+              setAutocompleteResults({
+                words: possibleWords,
+                state: null,
+              });
+            }}
+          >
+            <p>{toTitleCase(word)}</p>
           </div>
         ))}
       </div>

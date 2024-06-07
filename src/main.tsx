@@ -9,11 +9,13 @@ import WordsSearchPage from "./Components/WordsSearchDisplay/WordsSearchPage.tsx
 import WordsLoader from "./Components/WordsSearchDisplay/WordsLoader.ts";
 import Archive from "./Components/Archive/Archive.tsx";
 import AboutPage from "./Components/About/AboutPage.tsx";
+import Error from "./Components/Error/Error.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",

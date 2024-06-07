@@ -3,7 +3,7 @@ import "./HamburgerNavigationMenu.scss";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Flip from "gsap/Flip";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 gsap.registerPlugin(Flip);
 
 type NavigationItem = {
@@ -27,6 +27,7 @@ export default function HamburgerNavigationMenu({
   items,
   id,
 }: NavigationProps) {
+  const { pathname } = useLocation();
   const hamburgerMenuRef = useRef<HTMLDivElement>(null);
   const { contextSafe } = useGSAP();
   const isAnimationActive = useRef<boolean>(false);
@@ -276,9 +277,10 @@ export default function HamburgerNavigationMenu({
     )
       return;
 
-    const locationURLParts = window.location.pathname
-      .split("/")
-      .filter((x) => x !== "");
+    const alreadySelected = document.querySelector(".navigation-item.selected");
+    if (alreadySelected) alreadySelected.classList.remove("selected");
+
+    const locationURLParts = pathname.split("/").filter((x) => x !== "");
 
     const pagePath =
       locationURLParts.length < 1 ? "/" : "/" + locationURLParts[0];
@@ -298,7 +300,7 @@ export default function HamburgerNavigationMenu({
       "selected"
     );
     selectionIndicatorRef.current.style.gridRow = `${pagePathIdx + 1}`;
-  }, [items]);
+  }, [items, pathname]);
 
   return (
     <div id={id}>

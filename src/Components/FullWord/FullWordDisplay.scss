@@ -1,0 +1,42 @@
+.full-word-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  overflow-y: scroll;
+  max-width: 75svw;
+  margin-top: 1.7em;
+
+  h1 {
+    text-align: center;
+    user-select: none;
+  }
+
+  .word-associations {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

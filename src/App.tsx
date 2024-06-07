@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./App.scss";
 import HamburgerNavigationMenu from "./Components/HamburgerNavigationMenu/HamburgerNavigationMenu";
 import Icon from "./Components/Icon/Icon";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
     <section id="page">
       <header>
@@ -25,7 +27,7 @@ function App() {
           ]}
         />
         <h1 id="site-title">Asocijativni Recnik</h1>
-        <Icon id="logo" name="book" />
+        <Icon id="logo" name="book" onClick={() => navigate("/")} />
       </header>
 
       <section id="page-content">
