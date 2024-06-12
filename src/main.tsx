@@ -40,7 +40,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-//TODO: Implement navigation menu from 'FitnessTracker' repo and some random animations from 'Scroll' repo
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
