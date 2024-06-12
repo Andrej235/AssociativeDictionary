@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Word from "../../Models/Word";
 
-const baseApiURL: string = "http://localhost:5119/api";
+const baseApiURL: string = "https://associativedictionary.azurewebsites.net/api";
 
 interface SingleExerciseLoaderArguments extends LoaderFunctionArgs {
   params: Params<ParamParseKey<":id">>;

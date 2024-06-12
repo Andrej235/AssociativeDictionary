@@ -1,7 +1,7 @@
 import { defer } from "react-router-dom";
 import Word from "../../Models/Word";
 
-const baseApiURL: string = "http://localhost:5119/api";
+const baseApiURL: string = "https://associativedictionary.azurewebsites.net/api";
 
 export default async function WordsLoader() {
   return defer({
