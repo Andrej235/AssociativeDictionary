@@ -74,7 +74,7 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
     );
 
     const suggestions = [
-      ...new Set([...trieSuggestions, ...distanceBasedSuggestions]),
+      ...new Set([...trieSuggestions.map(toTitleCase), ...distanceBasedSuggestions.map(toTitleCase)]),
     ];
 
     setAutocompleteResults({
