@@ -3,6 +3,7 @@ import { Await, useLoaderData, useNavigate } from "react-router-dom";
 import Word from "../../Models/Word";
 import Search from "../Search/Search";
 import WordsLoader from "./WordsLoader";
+import { toTitleCase } from "../../ToTitleCase";
 
 export default function WordsSearchPage() {
   const data = useLoaderData() as ReturnType<typeof WordsLoader>;
@@ -15,13 +16,15 @@ export default function WordsSearchPage() {
           return (
             <Search
               possibleWords={words.map((x) => x.name)}
-              onSelectWord={(selectedWord) =>
+              onSelectWord={(selectedWord) => {
                 navigate(
                   `/words/${
-                    words.find((word) => word.name === selectedWord)?.id ?? 0
+                    words.find(
+                      (x) => toTitleCase(x.name) === toTitleCase(selectedWord)
+                    )?.id ?? 0
                   }`
-                )
-              }
+                );
+              }}
             />
           );
         }}
