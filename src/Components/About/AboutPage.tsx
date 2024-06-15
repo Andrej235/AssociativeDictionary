@@ -5,19 +5,19 @@ export default function AboutPage() {
   return (
     <div id="about-page">
       <FormattedText>
-        {`#O sajtu
-      Ovaj sajt je kreiran kao deo školskog projekta za predmete /Srpski jezik/ i /PIT/.
-      Predstavlja nacin za istraživanje asocijacija reči, dobijenih kao rezultat ankete sprovedene među *50* ispitanika. Naš cilj je bio da istražimo kako različiti ljudi povezuju reči i na koji način njihove asocijacije otkrivaju raznolike načine razmišljanja i razumevanja jezika.
-      Ispitanici su odgovarali na zadate reči i davali svoje *prve* asocijacije, što je omogućilo stvaranje ovog asocijativnog rečnika.`}
+        {`#О сајту
+      Овај сајт је креиран као део школског пројекта за предмете /Српски језик/ и /ПИТ/.
+      Представља начин за истраживање асоцијација речи, добијених као резултат анкете спроведене међу *50* испитаника. Наш циљ је био да истражимо како различити људи повезују речи и на који начин њихове асоцијације откривају разнолике начине размишљања и разумевања језика.
+      Испитаници су одговарали на задате речи и давали своје *прве* асоцијације, што је омогућило стварање овог асоцијативног речника.`}
       </FormattedText>
 
       <FormattedText>
-        {`##Ucesnici projekta
-        Andrej Nenadic
-        Luka Dzodan
-        Teodora Dzekic
-        Aleksandar Popovic
-        Lazar Stojanovic
+        {`##Uчesnici projekta
+        Andrej Nenadiћ
+        Luka Џodan
+        Teodora Џekiћ
+        Aleksandar Popoviћ
+        Lazar Stojanoviћ
          `}
       </FormattedText>
     </div>

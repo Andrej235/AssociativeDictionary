@@ -24,21 +24,21 @@ function App() {
           id="navigation"
           items={[
             {
-              name: "Pretraga",
+              name: "Претрага",
               path: "/",
             },
             {
-              name: "Arhiva",
+              name: "Архива",
               path: "/words",
             },
             {
-              name: "O Sajtu",
+              name: "О сајту",
               path: "/about",
             },
           ]}
         />
         <h1 id="site-title" onMouseOver={titleJumpAnimation}>
-          Asocijativni Recnik
+          Асоцијативни Речник
         </h1>
         <Icon id="logo" name="book" onClick={() => navigate("/")} />
       </header>
