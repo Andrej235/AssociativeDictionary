@@ -74,7 +74,10 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
     );
 
     const suggestions = [
-      ...new Set([...trieSuggestions.map(toTitleCase), ...distanceBasedSuggestions.map(toTitleCase)]),
+      ...new Set([
+        ...trieSuggestions.map(toTitleCase),
+        ...distanceBasedSuggestions.map(toTitleCase),
+      ]),
     ];
 
     setAutocompleteResults({
@@ -98,7 +101,7 @@ function Search({ possibleWords, onSelectWord, wrapperRef: ref }: SearchProps) {
 
           return true; //Clears the search bar / input field
         }}
-        placeholder="Pretrazite reci..."
+        placeholder="Претражите речи..."
       />
 
       <div id="autocomplete-container" ref={suggestionWrapperRef}>
